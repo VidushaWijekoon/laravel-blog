@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    <form method="POST" action="{{ route('posts.store') }}">
+                    <form method="POST" action="{{ route('posts.update', $post->id) }}">
                         @csrf
                         <div class="form-group">
                             <label>Post</label>
@@ -25,7 +25,7 @@
                             <textarea type="text" name="description" class="form-control" rows="5" required placeholder="Enter your post description"></textarea>
                         </div>
                        
-                        <button type="submit" class="btn btn-xm btn-primary mt-2" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Post</button>
+                        <button type="submit" class="btn btn-xm btn-primary mt-2" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">update</button>
                     </form>
                 </div>
             </div>

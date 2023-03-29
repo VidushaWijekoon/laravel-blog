@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -25,4 +27,12 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function allPosts(){
+        
+        $posts = Post::where('user_id', Auth::user()->id)->get();
+
+        return view('post.all-posts', compact('posts'));
+    }
+
 }
