@@ -13,15 +13,22 @@ class PostController extends Controller
 
         $validator = Validator::make($request->all(), [
             'title' => 'required',
-            'description' => 'required'
+            'description' => 'required',
+            'thumbnail' => 'required|image'
+            // 'thumbnail' => 'required|image|mimes:png'
         ]);
         if($validator->fails()){
             return back()->with('status', 'Something wrong');
         }else{
+            // Rename image
+            $imageName = time() . "." . $request->thumbnail->extension();
+            // save into folder
+            $request->thumbnail->move(public_path(path: 'thumbnail'), $imageName);
             Post::create([
                 'user_id' => auth()->user()->id,
                 'title' => $request->title,
-                'description' => $request->description
+                'description' => $request->description,
+                'thumbnail' => $imageName
             ]);
 
             return redirect(route('posts.all'))->with('status', 'Post has been successfully created');    

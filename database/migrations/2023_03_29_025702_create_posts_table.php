@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('title');
             $table->text('description');
+            $table->text('thumbnail');
             $table->timestamps();
 
             // Foreign key laravel relationship
