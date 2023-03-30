@@ -17,10 +17,14 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->user()->IsAdmin()){
-            return $next($request);
-        }else{            
-            // redirect(route('admin.dashboard'));
+        if(auth()->user()){
+            if(auth()->user()->IsAdmin()){
+                return $next($request);
+            }else{            
+                // redirect(route('admin.dashboard'));
+                return back();
+            }
+        }else{
             return back();
         }
     }
