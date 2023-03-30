@@ -15,4 +15,9 @@ class Post extends Model
         'description',
         'thumbnail'
     ];
+
+    // get user
+    public function user(){
+        return $this->belongsTo(related: User::class, foreignKey:'user_id');
+    }
 }

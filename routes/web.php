@@ -38,6 +38,9 @@ Route::group(['middlleware' => 'auth'], function (){
  
 
 // Admin
-Route::group(['middlware' => 'admin', 'auth'], function (){
-    Route::get('/admin/dashboard', [DashboardController::class, 'index'])->middleware('admin')->name('admin.dashboard');
+Route::group(['middlware' => 'admin', 'auth', 'prefix' => 'admin', 'as' => 'admin.'], function (){
+    Route::get('dashboard', [DashboardController::class, 'index'])->middleware('admin')->name('dashboard');
 });
+
+// using only in middleware
+// Route::middleware(middleware: 'admin')->group(function (){});

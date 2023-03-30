@@ -16,7 +16,7 @@
                     <div class="col p-4 d-flex flex-column position-static">
                         <img src="{{ asset('thumbnail/' . $post->thumbnail) }}" alt="" class="img-thumbnail w-50">
                         <h3 class="mb-0">{{ $post->title }}t</h3>
-                        <div class="mb-1 text-muted">{{ date('Y-m-d', strtotime( $post->created_at )) }}</div>
+                        <div class="mb-1 text-muted">{{ $post->user->name }} - {{ date('Y-m-d', strtotime( $post->created_at )) }}</div>
                         <p class="card-text mb-auto">{{ $post->description }}</p>
                         <a href="{{ route('posts.show', $post->id) }}" class="stretched-link">Continue reading</a>
                     </div>                   
